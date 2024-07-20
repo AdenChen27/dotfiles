@@ -1,0 +1,16 @@
+# Servers
+alias mw2="ssh adenc@midway2.rcc.uchicago.edu"
+alias mw3="ssh adenc@midway3.rcc.uchicago.edu"
+alias mw33="ssh adenc@midway3-login3.rcc.uchicago.edu"
+alias mwssd="ssh adenc@ssd.rcc.uchicago.edu"
+alias csil="ssh adenc@linux.cs.uchicago.edu"
+
+
+# ls configuration
+alias ls='ls -G --color=auto'
+alias ll='ls -lGrth --color=auto'
+
+
+# howdoi
+alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+

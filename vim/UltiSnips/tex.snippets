@@ -381,15 +381,6 @@ snippet <> "left< right>" i
 \left< ${1:${VISUAL}} \right> $0
 endsnippet
 
-context "math()"
-snippet abs "abs" iA
-\abs{$1} $0
-endsnippet
-
-context "math()"
-snippet norm "norm" iA
-\norm{$1} $0
-endsnippet
 
 
 
@@ -478,7 +469,7 @@ snippet nin "not in " wA
 endsnippet
 
 context "math()"
-snippet compl "complement" wA
+snippet compl "complement" iA
 ^\complement
 endsnippet
 
@@ -661,16 +652,6 @@ snippet -> "->" iA
 endsnippet
 
 context "math()"
-snippet -\ "rightharpoonup" iA
-\rightharpoonup 
-endsnippet
-
-context "math()"
-snippet weakto "weakto" i
-\rightharpoonup 
-endsnippet
-
-context "math()"
 snippet >= ">=" i
 \geq 
 endsnippet
@@ -704,6 +685,7 @@ endsnippet
 snippet << "<<" iA
 \ll
 endsnippet
+
 
 # functions
 context "math()"
@@ -796,11 +778,15 @@ endsnippet
 
 # ========== Analysis ==========
 
+context "math()"
+snippet abs "abs" iA
+\abs{$1} $0
+endsnippet
 
-# context "math()"
-# snippet norm "norm" i
-# \norm{$1} $0
-# endsnippet
+context "math()"
+snippet norm "norm" iA
+\norm{$1} $0
+endsnippet
 
 priority 10
 context "math()"
@@ -812,6 +798,16 @@ priority 100
 context "math()"
 snippet bidual "bidual" iA
 ^{**}
+endsnippet
+
+context "math()"
+snippet -\ "rightharpoonup" iA
+\rightharpoonup 
+endsnippet
+
+context "math()"
+snippet weakto "weakto" i
+\rightharpoonup 
 endsnippet
 
 

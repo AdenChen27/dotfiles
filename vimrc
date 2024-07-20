@@ -16,7 +16,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
-Plug 'ggandor/lightspeed.nvim'
+" Plug 'ggandor/lightspeed.nvim'
 Plug 'wfxr/minimap.vim'
 let g:minimap_width = 10
 let g:minimap_auto_start = 1

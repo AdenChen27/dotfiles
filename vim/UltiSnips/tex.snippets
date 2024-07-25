@@ -65,7 +65,7 @@ snippet todo "todo"
 \todo{TODO}
 endsnippet
 
-# Environments (text mode):
+# ========== ENVIRONMENTS ==========
 snippet beg "begin / end" b
 \\begin{$1}
 	$0
@@ -83,12 +83,6 @@ snippet item "Itemize" b
 	\item $0
 \end{itemize}
 endsnippet
-
-# snippet definition "definition" bA
-# \begin{definition}
-# 	${1:${VISUAL}}
-# \end{definition}
-# endsnippet
 
 snippet prop "proposition" b
 \begin{proposition}$1
@@ -138,6 +132,18 @@ snippet rem* "remark*" bA
 \end{remark*}
 endsnippet
 
+snippet note "note" b
+\begin{note}
+	${1:${VISUAL}}
+\end{note}
+endsnippet
+
+snippet note* "note*" bA
+\begin{note*}
+	${1:${VISUAL}}
+\end{note*}
+endsnippet
+
 snippet proof "proof" b
 \begin{proof}
 	${1:${VISUAL}}
@@ -150,22 +156,16 @@ snippet problem "problem" b
 \end{problem}
 endsnippet
 
-snippet def* "definition*" bA
-\begin{definition*}
-	$0
-\end{definition*}
-endsnippet
-
 snippet def "definition" b
 \begin{definition}
 	$0
 \end{definition}
 endsnippet
 
-snippet lemma "lemma" b
-\begin{lemma$1}
+snippet def* "definition*" bA
+\begin{definition*}
 	$0
-\end{lemma$1}
+\end{definition*}
 endsnippet
 
 snippet lem "lemma" b
@@ -192,12 +192,6 @@ snippet thm* "theorem" bA
 \end{theorem*}
 endsnippet
 
-snippet theorem "theorem" b
-\begin{theorem}
-	${1:${VISUAL}}
-\end{theorem}
-endsnippet
- 
 snippet equ "equation" b
 \begin{equation}
 	$0
@@ -215,6 +209,16 @@ snippet desc "description" b
 	\item[$1] $0
 \end{description}
 endsnippet
+
+# ENVIRONMENTS FOR BEAMER
+snippet frame "frame" b
+\begin{frame}[${1}]
+	$0
+\end{frame}
+endsnippet
+
+
+
 
 # enter/exit math mode
 snippet dm "Math" wA
@@ -459,8 +463,33 @@ snippet mid "mid" w
 endsnippet
 
 context "math()"
-snippet cc "subset" wA
+snippet `cc ` "subset" rwA
 \subset 
+endsnippet
+
+context "math()"
+snippet `cceq ` "subseteq" rwA
+\subseteq 
+endsnippet
+
+context "math()"
+snippet `ccneq ` "subsetneq" rwA
+\subsetneq 
+endsnippet
+
+context "math()"
+snippet `ncc ` "supset" rwA
+\supset 
+endsnippet
+
+context "math()"
+snippet `ncceq ` "supseteq" rwA
+\supseteq 
+endsnippet
+
+context "math()"
+snippet `nccneq ` "supsetneq" rwA
+\supsetneq 
 endsnippet
 
 context "math()"
@@ -528,9 +557,16 @@ snippet oo "\infty" i
 \infty
 endsnippet
 
+priority 100
+context "math()"
+snippet c... "\cdots" iA
+\cdots 
+endsnippet
+
+priority 10
 context "math()"
 snippet ... "\dots" iA
-\dots
+\dots 
 endsnippet
 
 context "math()"

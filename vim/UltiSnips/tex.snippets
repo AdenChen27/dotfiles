@@ -65,6 +65,12 @@ snippet todo "todo"
 \todo{TODO}
 endsnippet
 
+# ========== TEXT ENVIRONMENTS ==========
+snippet ttt "texttt" w
+\texttt{$1}$0
+endsnippet
+
+
 # ========== ENVIRONMENTS ==========
 snippet beg "begin / end" b
 \\begin{$1}
@@ -192,7 +198,7 @@ snippet thm* "theorem" bA
 \end{theorem*}
 endsnippet
 
-snippet equ "equation" b
+snippet eqn "equation" b
 \begin{equation}
 	$0
 \end{equation}
@@ -210,10 +216,25 @@ snippet desc "description" b
 \end{description}
 endsnippet
 
+snippet href "href" w
+\href{$1}{$2} $0
+endsnippet
+
+
+snippet fig "figure" w
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=${1:\textwidth}]{$2}
+	\caption{$3}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
+
+
 # ENVIRONMENTS FOR BEAMER
 snippet frame "frame" b
-\begin{frame}
-	\frametitle{$1}
+\begin{frame}{$1}
 	$0
 \end{frame}
 endsnippet
@@ -518,7 +539,7 @@ snippet inv "inverse" i
 endsnippet
 
 snippet st "such that" i
-such that
+such that 
 endsnippet
 
 snippet fe "for every" i

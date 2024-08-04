@@ -127,13 +127,13 @@ snippet ex "exercise" b
 endsnippet
 
 snippet rem "remark" b
-\begin{remark}
+\begin{remark}$1
 	${1:${VISUAL}}
 \end{remark}
 endsnippet
 
 snippet rem* "remark*" bA
-\begin{remark*}
+\begin{remark*}$1
 	${1:${VISUAL}}
 \end{remark*}
 endsnippet
@@ -151,7 +151,7 @@ snippet note* "note*" bA
 endsnippet
 
 snippet proof "proof" b
-\begin{proof}
+\begin{proof}$1
 	${1:${VISUAL}}
 \end{proof}
 endsnippet
@@ -163,25 +163,25 @@ snippet problem "problem" b
 endsnippet
 
 snippet def "definition" b
-\begin{definition}
+\begin{definition}$1
 	$0
 \end{definition}
 endsnippet
 
 snippet def* "definition*" bA
-\begin{definition*}
+\begin{definition*}$1
 	$0
 \end{definition*}
 endsnippet
 
 snippet lem "lemma" b
-\begin{lemma}
+\begin{lemma}$1
 	$0
 \end{lemma}
 endsnippet
 
 snippet lem* "lemma*" bA
-\begin{lemma*}
+\begin{lemma*}$1
 	$0
 \end{lemma*}
 endsnippet
@@ -476,7 +476,7 @@ snippet o/ "emptyset" w
 endsnippet
 
 context "math()"
-snippet `in ` "in" rwA
+snippet ` in ` "in" rwA
 \in $0
 endsnippet
 
@@ -549,10 +549,6 @@ endsnippet
 
 snippet fe "for every" i
 for every 
-endsnippet
-
-snippet vs "vector space" i
-vector space 
 endsnippet
 
 snippet ae "almost everywhere" i
@@ -834,7 +830,7 @@ endsnippet
 
 context "math()"
 snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
-\vect{`!p snip.rv=match.group(1)`}
+\vec{`!p snip.rv=match.group(1)`}
 endsnippet 
 
 

@@ -18,6 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 " Plug 'ggandor/lightspeed.nvim'
 Plug 'wfxr/minimap.vim'
+Plug 'psliwka/vim-smoothie'
 let g:minimap_width = 10
 let g:minimap_auto_start = 1
 let g:minimap_auto_start_win_enter = 1

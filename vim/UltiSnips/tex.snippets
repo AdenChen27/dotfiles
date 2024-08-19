@@ -396,18 +396,22 @@ endsnippet
 
 
 # math brackets & floor/ceil
+context "math()"
 snippet () "left( right)" i
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
 
+context "math()"
 snippet [] "left[ right]" i
 \left[ ${1:${VISUAL}} \right] $0
 endsnippet
 
+context "math()"
 snippet {} "left{ right}" i
 \left\{ ${1:${VISUAL}} \right\} $0
 endsnippet
 
+context "math()"
 snippet <> "left< right>" i
 \left< ${1:${VISUAL}} \right> $0
 endsnippet
@@ -415,22 +419,27 @@ endsnippet
 
 
 
+context "math()"
 snippet lrp "left( right)" iA
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
 
+context "math()"
 snippet lr{} "left\{ right\}" iA
 \left\\{ ${1:${VISUAL}} \right\\} $0
 endsnippet
 
+context "math()"
 snippet lrb "left\{ right\}" iA
 \left\\{ ${1:${VISUAL}} \right\\} $0
 endsnippet
 
+context "math()"
 snippet lr[] "left[ right]" iA
 \left[ ${1:${VISUAL}} \right] $0
 endsnippet
 
+context "math()"
 snippet lra "leftangle rightangle" iA
 \left< ${1:${VISUAL}} \right>$0
 endsnippet
@@ -446,14 +455,17 @@ snippet AA "forall" iA
 \forall 
 endsnippet
 
+context "math()"
 snippet contra "contradiction" i
 \contradiction
 endsnippet
 
+context "math()"
 snippet => "implies" i
 \implies
 endsnippet
 
+context "math()"
 snippet =< "implied by" i
 \impliedby
 endsnippet
@@ -602,7 +614,7 @@ endsnippet
 # big symbols
 context "math()"
 snippet sum "sum" w
-\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+\sum_{j=${1:1}}^{${2:\infty}} ${3:a_n z^n}
 endsnippet
 
 context "math()"
@@ -778,6 +790,16 @@ priority 100
 context "math()"
 snippet "([a-zA-Z])bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet "([a-zA-Z])\* " "^*" riA
+`!p snip.rv=match.group(1)`^* 
+endsnippet
+
+context "math()"
+snippet "([a-zA-Z])\*\* " "^{**}" riA
+`!p snip.rv=match.group(1)`^{**} 
 endsnippet
 
 priority 10

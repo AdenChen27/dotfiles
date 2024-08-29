@@ -10,6 +10,10 @@ alias csil="ssh adenc@linux.cs.uchicago.edu"
 alias ls='ls -G --color=auto'
 alias ll='ls -lGrth --color=auto'
 
+# vim
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 # howdoi
 alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'

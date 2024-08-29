@@ -1,7 +1,11 @@
 " For preservation of last edit point
-source $VIMRUNTIME/vimrc_example.vim
+if !has('nvim')
+    source $VIMRUNTIME/vimrc_example.vim
+endif
 
 set nohlsearch
+set mouse=a
+
 
 filetype plugin on
 
@@ -69,7 +73,8 @@ Plug 'KeitaNakamura/tex-conceal.vim'
     let g:tex_conceal='abdmgs'
 
     " Conceal certain characters
-    hi Conceal ctermbg=NONE
+    " hi Conceal ctermbg=none guibg=none
+
 
     " Shorten the begin and end statements
     " call matchadd('Conceal', '\\begin{\ze[^}]\+}',    10, -1, {'conceal':'['})
@@ -95,6 +100,14 @@ call plug#end()
 
 
 
+if has("gui_running")
+  syntax on
+  set hlsearch
+  colorscheme macvim
+  set bs=2
+  set ai
+  set ruler
+endif
 
 
 " ========== Colorscheme ==========

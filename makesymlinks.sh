@@ -30,6 +30,15 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+
+### manual config
+echo "nvim:"
+mv ~/.config/nvim/init.vim $olddir/
+ln -s $dir/nvim/init.vim ~/.config/nvim/init.vim
+###
+
+
+
 install_zsh () {
 # Test to see if zshell is installed.  If it is:
 if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then

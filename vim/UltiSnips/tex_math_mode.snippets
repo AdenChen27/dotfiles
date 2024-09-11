@@ -1,0 +1,231 @@
+global !p
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+
+def math():
+	return (
+	    vim.eval('vimtex#syntax#in_mathzone()') == '1' or 
+	    env("align*") or
+	    env("equation")
+	)
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+endglobal
+
+
+# ========== Fractions ==========
+context "math()"
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet / "Fraction" i
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+
+context "math()"
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+context "math()"
+snippet '^.*\)/' "() frac" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i-=1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+
+# ========== Math Brackets ==========
+context "math()"
+snippet () "left( right)" i
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+context "math()"
+snippet [] "left[ right]" i
+\left[ ${1:${VISUAL}} \right] $0
+endsnippet
+context "math()"
+snippet {} "left{ right}" i
+\left\{ ${1:${VISUAL}} \right\} $0
+endsnippet
+context "math()"
+snippet <> "left< right>" i
+\left< ${1:${VISUAL}} \right> $0
+endsnippet
+
+context "math()"
+snippet lrp "left( right)" iA
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+context "math()"
+snippet lrb "left\{ right\}" iA
+\left\\{ ${1:${VISUAL}} \right\\} $0
+endsnippet
+context "math()"
+snippet lra "leftangle rightangle" iA
+\left< ${1:${VISUAL}} \right>$0
+endsnippet
+
+
+
+# ========== Subscripts and Superscripts ==========
+context "math()"
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+context "math()"
+snippet __ "subscript" iA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet ^^ "superscript" iA
+^{$1}$0
+endsnippet
+
+# ========== Subscripts and Superscripts in Sequences ==========
+context "math()"
+snippet nn "_n" iA
+_n$0
+endsnippet
+
+context "math()"
+snippet ii "_i" iA
+_i$0
+endsnippet
+
+context "math()"
+snippet seq "sequence" iA
+(${1:s}_n)${2:_{n \leq 1}} $0
+endsnippet
+
+
+# ========== Arrows ==========
+# succ etc.: 
+context "math()"
+snippet > "\succ" i
+\succ 
+endsnippet
+context "math()"
+snippet < "<=" i
+\prec 
+endsnippet
+context "math()"
+snippet >= "\succeq" i
+\succeq 
+endsnippet
+context "math()"
+snippet <= "<=" i
+\preceq 
+endsnippet
+
+context "math()"
+snippet overarr "overarrow" iA
+\overrightarrow{$1}$0
+endsnippet
+
+context "math()"
+snippet !> "mapsto" iA
+\mapsto 
+endsnippet
+
+context "math()"
+snippet <- "<-" iA
+\leftarrow
+endsnippet
+
+context "math()"
+snippet <-> "leftrightarrow" iA
+\leftrightarrow
+endsnippet
+
+snippet >> ">>" iA
+\gg
+endsnippet
+
+snippet << "<<" iA
+\ll
+endsnippet
+
+
+# ========== Complex Symbols ========== 
+context "math()"
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n} $0
+endsnippet
+
+context "math()"
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}} $0 
+endsnippet
+
+context "math()"
+snippet int "\int" w
+\int_{$1}^{$2} $0
+endsnippet
+
+context "math()"
+snippet prod "product" w
+\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet part "d/dx" w
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
+endsnippet
+
+context "math()"
+snippet deri "d/dx" w
+\frac{\d ${1:V}}{\d ${2:x}} $0
+endsnippet
+
+context "math()"
+snippet partk "d^k/dx^k" w
+\frac{\partial^{$1} ${2:V}}{\partial ${3:x}^{$1}} $0
+endsnippet
+
+context "math()"
+snippet taylor "taylor" w
+\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 $0
+endsnippet
+
+snippet bigfun "Big function" iA
+\begin{align*}
+	$1: $2 &\longrightarrow $3 \\\\
+	   $4 &\longmapsto $5
+\end{align*}$0
+endsnippet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

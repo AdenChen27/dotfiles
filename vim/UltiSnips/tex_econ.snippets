@@ -1,0 +1,23 @@
+global !p
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+
+def math():
+	return (
+	    vim.eval('vimtex#syntax#in_mathzone()') == '1' or 
+	    env("align*") or
+	    env("equation")
+	)
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+endglobal
+
+
+
+
+
+
+
+

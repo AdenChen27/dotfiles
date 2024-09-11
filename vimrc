@@ -20,7 +20,6 @@ Plug 'tmsvg/pear-tree'
 Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
-" Plug 'ggandor/lightspeed.nvim'
 Plug 'wfxr/minimap.vim'
 Plug 'psliwka/vim-smoothie'
 let g:minimap_width = 10
@@ -36,8 +35,8 @@ Plug 'ayu-theme/ayu-vim'
 let ayucolor="light"
 
 " tex
-Plug 'matze/vim-tex-fold'
-    let g:tex_fold_enabled=1
+" Plug 'matze/vim-tex-fold'
+"     let g:tex_fold_enabled=1
 Plug 'lervag/vimtex'
     let g:tex_flavor='latex'
     let g:vimtex_view_method = 'skim' 
@@ -45,7 +44,7 @@ Plug 'lervag/vimtex'
     let g:vimtex_view_skim_activate = 1
     let g:vimtex_quickfix_mode=0
     let g:vimtex_fold_enabled=1
-    let g:vimtex_fold_manual=1
+    " let g:vimtex_fold_manual=1
 
     let g:vimtex_compiler_latexmk = {
         \ 'aux_dir' : 'aux',
@@ -100,14 +99,6 @@ call plug#end()
 
 
 
-if has("gui_running")
-  syntax on
-  set hlsearch
-  colorscheme macvim
-  set bs=2
-  set ai
-  set ruler
-endif
 
 
 " ========== Colorscheme ==========
@@ -115,6 +106,10 @@ set background=light
 colorscheme ayu
 highlight! link Conceal Normal
 " colorscheme PaperColor
+highlight SpellBad cterm=underline term=underline ctermfg=NONE guifg=NONE
+highlight Normal ctermfg=black guifg=#111111
+
+
 
 
 " ========== Misc =========

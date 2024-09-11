@@ -1,0 +1,111 @@
+global !p
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+
+def math():
+	return (
+	    vim.eval('vimtex#syntax#in_mathzone()') == '1' or 
+	    env("align*") or
+	    env("equation")
+	)
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+
+abbr_to_env_name = {
+    "thm": "theorem",
+    "lem": "lemma",
+    "prop": "proposition",
+    "cor": "corollary",
+    "def": "definition",
+    "rem": "remark",
+}
+endglobal
+
+
+
+# ===============================================
+# ================ ENVIRONMENTS =================
+# ===============================================
+snippet beg "begin / end" b
+\\begin{$1}
+	$0
+\\end{$1}
+endsnippet
+
+# Enum & item:
+snippet enum "enumerate" b
+\begin{enumerate}[label=${1:(\roman*)}]
+	\item $0
+\end{enumerate}
+endsnippet
+snippet item "Itemize" b
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+
+snippet href "href" bA
+\href{$1}{$2} $0
+endsnippet
+
+snippet fig "figure" b
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=${1:\textwidth}]{$2}
+	\caption{$3}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
+
+# ========== Envs With Abbr ==========
+snippet `thm|lem|prop|cor|def|rem` "Theorem Envs (Abbreviations)" br
+\begin{`!p snip.rv = abbr_to_env_name[match.group(0)]`}${1}
+	${2:${VISUAL}}
+\end{`!p snip.rv = abbr_to_env_name[match.group(0)]`}
+endsnippet
+snippet `(thm|lem|prop|cor|def|rem)\*` "Theorem Envs (Abbreviations)" brA
+\begin{`!p snip.rv = abbr_to_env_name[match.group(0)[:-1]]`*}${1}
+	${2:${VISUAL}}
+\end{`!p snip.rv = abbr_to_env_name[match.group(0)[:-1]]`*}
+endsnippet
+
+
+# ========== Envs Without Abbr ==========
+snippet `proof|example|note|fact|claim|notation|conjecture|problem|question|equation|align` "Envs 2" br
+\begin{`!p snip.rv = match.group(0)`}${1}
+	${2:${VISUAL}}
+\end{`!p snip.rv = match.group(0)`}
+endsnippet
+snippet `(proof|example|note|fact|claim|notation|conjecture|problem|question|equation|align)\*` "Envs 2" brA
+\begin{`!p snip.rv = match.group(0)`}${1}
+	${2:${VISUAL}}
+\end{`!p snip.rv = match.group(0)`}
+endsnippet
+
+
+# ========== Math Mode ==========
+context "math()"
+snippet case "cases" wA
+\begin{cases}
+	$1
+\end{cases}
+endsnippet
+
+
+
+# ===============================================
+# =========== ENVIRONMENTS FOR BEAMER =========== 
+# ===============================================
+snippet frame "frame" b
+\begin{frame}{$1}
+	$0
+\end{frame}
+endsnippet
+
+
+

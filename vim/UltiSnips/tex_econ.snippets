@@ -14,6 +14,15 @@ def comment():
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 endglobal
 
+context "math()"
+snippet price "price" wA
+p_{$1}^$0
+endsnippet
+
+context "math()"
+snippet elas "elasticity" wA
+\epsilon_{$1}^$0
+endsnippet
 
 
 

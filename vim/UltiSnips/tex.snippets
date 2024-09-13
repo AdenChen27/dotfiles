@@ -78,6 +78,11 @@ snippet ^^ "text superscript" wA
 \textsuperscript{$1}$0
 endsnippet
 
+context "math()"
+snippet tt "text" iA
+\text{ $1}$0
+endsnippet
+
 
 # ========== Enter/Exit Math Mode ========== 
 snippet dm "Math" wA
@@ -102,11 +107,6 @@ if t[2] and t[2][0] not in [',', '.', '?', '-', ' ', "'"]:
 else:
 	snip.rv = ''
 `$2
-endsnippet
-
-context "math()"
-snippet tt "text" iA
-\text{$1}$0
 endsnippet
 
 
@@ -318,7 +318,7 @@ endsnippet
 priority 100
 context "math()"
 snippet c... "\cdots" iA
-\cdots 
+\cdots
 endsnippet
 
 priority 10

@@ -109,8 +109,23 @@ _n$0
 endsnippet
 
 context "math()"
+snippet mm "_m" iA
+_m$0
+endsnippet
+
+context "math()"
 snippet ii "_i" iA
 _i$0
+endsnippet
+
+context "math()"
+snippet jj "_j" iA
+_j$0
+endsnippet
+
+context "math()"
+snippet kk "_k" iA
+_k$0
 endsnippet
 
 context "math()"
@@ -189,18 +204,28 @@ snippet prod "product" w
 endsnippet
 
 context "math()"
-snippet part "d/dx" w
-\frac{\partial ${1:V}}{\partial ${2:x}} $0
-endsnippet
-
-context "math()"
-snippet deri "d/dx" w
+snippet deri "derivative" w
 \frac{\d ${1:V}}{\d ${2:x}} $0
 endsnippet
 
 context "math()"
-snippet partk "d^k/dx^k" w
+snippet part "partial" w
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
+endsnippet
+
+context "math()"
+snippet ipart "inline partial" w
+{\partial ${1:V}} / {\partial ${2:x}} $0
+endsnippet
+
+context "math()"
+snippet partk "k-th partial" w
 \frac{\partial^{$1} ${2:V}}{\partial ${3:x}^{$1}} $0
+endsnippet
+
+context "math()"
+snippet ipartk "inline k-th partial" w
+{\partial^{$1} ${2:V}} / {\partial ${3:x}^{$1}} $0
 endsnippet
 
 context "math()"
